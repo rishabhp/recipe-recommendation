@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_recommendation/screens/registration_screen.dart';
 import 'screens/login_screen.dart';
 
 void main() {
@@ -13,6 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Recipe Recommender',
+      routes: {
+        '/login': (context) => LoginScreen(),
+        '/signup': (context) => RegistrationScreen() 
+      },
       home: LoginScreen(),
     );
   }

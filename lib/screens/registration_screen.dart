@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_recommendation/widgets/custom_hero_banner.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegistrationScreen extends StatefulWidget {
+  const RegistrationScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegistrationScreenState extends State<RegistrationScreen> {
+  final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
+    usernameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
@@ -27,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomHeroBanner(), // for header image + logo + app name
+            const CustomHeroBanner(),
             SizedBox(height: 12),
             Padding(
               padding: EdgeInsets.all(24.0),
@@ -35,12 +37,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Welcome Back!",
+                    "Welcome Aboard!",
                     style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
                   ),
                   SizedBox(height: 4),
                   Text(
-                    'Sign in to discover amazing recipes',
+                    'Sign up to discover amazing recipes',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
                   ),
                   SizedBox(height: 20),
@@ -49,6 +51,30 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Text(
+                          "Username",
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        TextFormField(
+                          controller: usernameController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Username cannot be empty';
+                            }
+                            // TODO: ADD USERNAME VALIDATION LATER
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            hintText: 'your-username',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
                         Text(
                           "Email",
                           style: TextStyle(
@@ -104,8 +130,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
                                 print(
-                                  'Login Successful',
-                                ); // move to user dashboard
+                                  'Signup Successful',
+                                ); // move to login page
                               }
                             },
                             style: ElevatedButton.styleFrom(
@@ -116,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               elevation: 4,
                             ),
                             child: Text(
-                              "Sign In",
+                              "Sign Up",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
@@ -133,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Don't have an account? ",
+                                "Already have an account? ",
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
@@ -141,10 +167,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.pushNamed(context, '/signup');
+                                  Navigator.pushNamed(context, '/login');
                                 },
                                 child: Text(
-                                  "Sign Up",
+                                  "Sign In",
                                   style: TextStyle(color: Colors.orange),
                                 ),
                               ),
@@ -164,9 +190,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: Colors.green.shade100,
                       borderRadius: BorderRadius.circular(12.0),
                       gradient: LinearGradient(
-                        colors: [Color.fromARGB(255, 255, 179, 125), Color.fromARGB(255, 200, 255, 112)],
+                        colors: [
+                          Color.fromARGB(255, 255, 179, 125),
+                          Color.fromARGB(255, 200, 255, 112),
+                        ],
                         begin: Alignment.bottomLeft,
-                        end: Alignment.topRight
+                        end: Alignment.topRight,
                       ),
                     ),
                     child: Text(
