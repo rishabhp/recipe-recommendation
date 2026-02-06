@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:recipe_recommendation/screens/home_screen.dart';
 import 'package:recipe_recommendation/screens/registration_screen.dart';
 import 'screens/login_screen.dart';
 import 'firebase_options.dart';
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
       title: 'Recipe Recommender',
       routes: {
         '/login': (context) => LoginScreen(),
-        '/signup': (context) => RegistrationScreen() 
+        '/signup': (context) => RegistrationScreen(),
+        '/home': (context) => HomeScreen(),
       },
       home: LoginScreen(),
     );

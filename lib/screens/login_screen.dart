@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_recommendation/services/auth_service.dart';
 import 'package:recipe_recommendation/widgets/custom_hero_banner.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -9,9 +10,32 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthService _authService = AuthService();
+
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  Future<void> onLoginPressed() async {
+    if (!_formKey.currentState!.validate()) return;
+
+    try {
+      await _authService.login(
+        email: emailController.text.trim(), 
+        password: passwordController.text.trim()
+      );
+
+      if (!mounted) return;
+
+      Navigator.pushReplacementNamed(context, '/home');
+    } catch(e) {
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString()))
+      );
+    }
+  }
 
   @override
   void dispose() {
@@ -101,13 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 48,
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                print(
-                                  'Login Successful',
-                                ); // move to user dashboard
-                              }
-                            },
+                            onPressed: onLoginPressed,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.deepOrange,
                               shape: RoundedRectangleBorder(

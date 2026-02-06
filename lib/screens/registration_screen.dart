@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_recommendation/services/auth_service.dart';
 import 'package:recipe_recommendation/widgets/custom_hero_banner.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -9,10 +10,34 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  final AuthService _authService = AuthService();
+
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  Future<void> onRegisterPressed () async {
+    if (!_formKey.currentState!.validate()) return;
+
+    try {
+        await _authService.register(
+        email: emailController.text.trim(), 
+        password: passwordController.text.trim(), 
+        username: usernameController.text.trim()
+      );
+
+      if (!mounted) return; // checks if the widget has not been discarded while async operation was being performed
+
+      Navigator.pushReplacementNamed(context, '/home');
+    } catch (e) {
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString()))
+      );
+    }
+  }
 
   @override
   void dispose() {
@@ -127,13 +152,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           height: 48,
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: () {
-                              if (_formKey.currentState!.validate()) {
-                                print(
-                                  'Signup Successful',
-                                ); // move to login page
-                              }
-                            },
+                            onPressed: onRegisterPressed,
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.deepOrange,
                               shape: RoundedRectangleBorder(
