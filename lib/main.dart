@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:recipe_recommendation/screens/auth_gate.dart';
 import 'package:recipe_recommendation/screens/home_screen.dart';
 import 'package:recipe_recommendation/screens/registration_screen.dart';
 import 'screens/login_screen.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => RegistrationScreen(),
         '/home': (context) => HomeScreen(),
       },
-      home: LoginScreen(),
+      home: AuthGate(),
     );
   }
 }
