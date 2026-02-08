@@ -1,0 +1,4 @@
+enum DietTypes {
+  veg,
+  nonveg
+}

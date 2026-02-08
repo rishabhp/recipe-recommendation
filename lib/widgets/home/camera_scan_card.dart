@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_recommendation/utils/app_gradients.dart';
 import 'package:recipe_recommendation/widgets/icon_box.dart';
 
 class CameraScanCard extends StatelessWidget {
@@ -10,9 +11,7 @@ class CameraScanCard extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       padding: EdgeInsets.symmetric(horizontal: 24, vertical: 32),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFFF97316), Color(0xFFEA580C)],
-        ),
+        gradient: AppGradients.primary,
         borderRadius: BorderRadius.all(Radius.circular(28)),
       ),
       child: Row(

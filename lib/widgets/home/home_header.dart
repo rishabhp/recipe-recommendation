@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_recommendation/utils/app_gradients.dart';
 
 class HomeHeader extends StatelessWidget {
   final String username;
@@ -7,10 +8,8 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFFF97316), Color(0xFFEA580C)],
-        ),
+      decoration: BoxDecoration(
+        gradient: AppGradients.primary,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(32),
           bottomRight: Radius.circular(32),
@@ -49,10 +48,16 @@ class HomeHeader extends StatelessWidget {
                       ),
                     ],
                   ),
-                  CircleAvatar(
-                    radius: 24,
-                    backgroundColor: Colors.white24,
-                    child: Icon(Icons.person, color: Colors.white),
+                  InkWell(
+                    borderRadius: BorderRadius.circular(24),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/profile');
+                    },
+                    child: CircleAvatar(
+                      radius: 24,
+                      backgroundColor: Colors.white24,
+                      child: Icon(Icons.person, color: Colors.white),
+                    ),
                   ),
                 ],
               ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_recommendation/services/auth_service.dart';
 import 'package:recipe_recommendation/services/user_service.dart';
 import 'package:recipe_recommendation/widgets/home/add_ingredients_title.dart';
 import 'package:recipe_recommendation/widgets/home/camera_scan_card.dart';

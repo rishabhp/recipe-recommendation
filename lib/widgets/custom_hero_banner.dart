@@ -35,7 +35,7 @@ class CustomHeroBanner extends StatelessWidget {
                   color: Colors.white.withAlpha(220),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                child: Icon(Icons.kitchen, color: Colors.orange),
+                child: Icon(Icons.kitchen, color: Colors.orange, size: 42,),
               ),
               SizedBox(width: 20),
               Column(

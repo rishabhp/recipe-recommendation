@@ -26,10 +26,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         password: passwordController.text.trim(), 
         username: usernameController.text.trim()
       );
-
-      if (!mounted) return; // checks if the widget has not been discarded while async operation was being performed
-
-      Navigator.pushReplacementNamed(context, '/home');
+      
     } catch (e) {
       if (!mounted) return;
 

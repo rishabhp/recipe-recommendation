@@ -24,10 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
         email: emailController.text.trim(), 
         password: passwordController.text.trim()
       );
-
-      if (!mounted) return;
-
-      Navigator.pushReplacementNamed(context, '/home');
+      
     } catch(e) {
       if (!mounted) return;
 

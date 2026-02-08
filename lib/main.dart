@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:recipe_recommendation/screens/auth_gate.dart';
 import 'package:recipe_recommendation/screens/home_screen.dart';
+import 'package:recipe_recommendation/screens/profile_screen.dart';
 import 'package:recipe_recommendation/screens/registration_screen.dart';
 import 'screens/login_screen.dart';
 import 'firebase_options.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/signup': (context) => RegistrationScreen(),
         '/home': (context) => HomeScreen(),
+        '/profile': (context) => ProfileScreen(),
       },
       home: AuthGate(),
     );
