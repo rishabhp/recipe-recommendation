@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_recommendation/models/diet_types.dart';
+import 'package:recipe_recommendation/constants/diet_types.dart';
 import 'package:recipe_recommendation/widgets/profile/dietary_preference_card.dart';
 
 class DietaryPreferenceSection extends StatelessWidget {
