@@ -1,0 +1,4 @@
+enum IngredientSource {
+  camera,
+  manual
+}
