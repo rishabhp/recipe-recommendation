@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_recommendation/screens/recipe_recommendation_screen.dart';
 
 class BottomFindRecipeBar extends StatelessWidget {
   final Set<String> selectedIngredients;
@@ -26,13 +27,13 @@ class BottomFindRecipeBar extends StatelessWidget {
                       : "Ready to find recipes with $count ingredients",
                   style: TextStyle(fontSize: 16),
                 ),
-          
+
                 const SizedBox(height: 12),
-          
+
                 SizedBox(
                   width: double.infinity,
                   height: 52,
-          
+
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.deepOrange,
@@ -40,13 +41,23 @@ class BottomFindRecipeBar extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                       ),
                     ),
-          
+
                     onPressed: count < 3
                         ? null
                         : () {
-                            // TODO : add api call here
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => RecipeRecommendationScreen(
+                                  selectedIngredients: selectedIngredients,
+                                ),
+                              ),
+                            );
                           },
-                    child: Text("Find Recipes", style: TextStyle(color: Colors.white, fontSize: 24),),
+                    child: Text(
+                      "Find Recipes",
+                      style: TextStyle(color: Colors.white, fontSize: 24),
+                    ),
                   ),
                 ),
               ],

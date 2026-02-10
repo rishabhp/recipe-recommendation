@@ -11,13 +11,13 @@ class UserPreferences {
     required this.customRestrictions,
   });
 
-  static UserPreferences fromFirestore(Map<String, dynamic> data) {
+  factory UserPreferences.fromFirestore(Map<String, dynamic> data) {
     return UserPreferences(
       dietType: DietTypes.values.firstWhere(
         (e) => e.name == (data['dietType'] ?? 'nonveg'),
       ),
-      intolerances: Set<String>.from(data['intolerances'] ?? []),
-      customRestrictions: Map<String, String>.from(data['customRestrictions'] ?? {}),
+      intolerances: Set<String>.from(data['intolerances'] ?? const []),
+      customRestrictions: Map<String, String>.from(data['customRestrictions'] ?? const {}),
     );
   }
 
