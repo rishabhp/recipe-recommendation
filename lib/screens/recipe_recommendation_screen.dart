@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_recommendation/models/recipe.dart';
 import 'package:recipe_recommendation/services/api_service.dart';
 import 'package:recipe_recommendation/utils/app_gradients.dart';
-import 'package:recipe_recommendation/utils/string_extension.dart';
+import 'package:recipe_recommendation/widgets/recipe_recommendation/recipe_card.dart';
 
 class RecipeRecommendationScreen extends StatefulWidget {
   final Set<String> selectedIngredients;
@@ -101,7 +101,13 @@ class _RecipeRecommendationScreenState
             itemBuilder: (context, index) {
               final recipe = recipes[index];
 
-              return ListTile(title: Text(recipe.title.toTitleCase()));
+              return RecipeCard(
+                title: recipe.title,
+                imageUrl: recipe.imageUrl,
+                missingIngredientCount: recipe.missingIngredientCount,
+                missedIngredients: recipe.missedIngredients,
+                usedIngredients: recipe.usedIngredients,
+              );
             },
           );
         },

@@ -7,7 +7,6 @@ import 'package:recipe_recommendation/screens/profile_screen.dart';
 import 'package:recipe_recommendation/screens/registration_screen.dart';
 import 'screens/login_screen.dart';
 import 'firebase_options.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
