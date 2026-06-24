@@ -57,3 +57,4 @@ flutter run
 - Firebase configuration files are intentionally not included in the repository
 - Each developer must run `flutterfire configure` locally
 - Do not commit generated Firebase config files
+"# recipe-recommendation" 
